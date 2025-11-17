@@ -47,9 +47,9 @@ jobs:
     - name: Setup SukiSU
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        rm -rf SukiSU
+        rm -rf KernelSU-Next
         curl -LSs "https://github.com/SukiSU-Ultra/SukiSU-Ultra/raw/refs/heads/nongki/kernel/setup.sh" | bash -s nongki
-        KSU_VERSION=$(cd SukiSU && expr $(/usr/bin/git rev-list --count HEAD) + 10200)
+        KSU_VERSION=$(cd KernelSU && expr $(/usr/bin/git rev-list --count HEAD) + 10200)
         echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
 
     - name: Build Joan kernel with SukiSU
