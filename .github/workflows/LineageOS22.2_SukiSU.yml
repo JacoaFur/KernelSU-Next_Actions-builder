@@ -40,14 +40,13 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone --recursive https://github.com/JacoaFur/android_kernel_lge_msm8998.git -b lineage-22.2 android-kernel --depth=1
+        git clone --recursive https://github.com/JacoaFur/android_kernel_lge_msm8998.git -b sukisu android-kernel --depth=1
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts
         sed -i 's/ -dirty//g' setlocalversion
 
     - name: Setup SukiSU
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        rm -rf KernelSU-Next
         curl -LSs "https://github.com/SukiSU-Ultra/SukiSU-Ultra/raw/refs/heads/nongki/kernel/setup.sh" | bash -s nongki
         KSU_VERSION=$(cd KernelSU && expr $(/usr/bin/git rev-list --count HEAD) + 10200)
         echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
