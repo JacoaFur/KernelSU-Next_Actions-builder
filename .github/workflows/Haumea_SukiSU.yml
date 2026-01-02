@@ -60,10 +60,9 @@ jobs:
         export KBUILD_BUILD_HOST=Github-Action
         export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
         BA_CMD="CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-buildroot-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-androideabi-"
-        EX_CMD="LD=ld.lld LLVM=1 LLVM_IAS=1"
         DEFCONFIG="yulbax_defconfig"
-        make O=out ARCH=arm64 $BA_CMD $EX_CMD $DEFCONFIG
-        make -j$(nproc --all) O=out ARCH=arm64 $BA_CMD $EX_CMD
+        make O=out ARCH=arm64 $BA_CMD $DEFCONFIG
+        make -j$(nproc --all) O=out ARCH=arm64 $BA_CMD
 
     - name: Check kernel output files for Image
       run: |
