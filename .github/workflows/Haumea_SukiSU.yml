@@ -59,7 +59,7 @@ jobs:
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-64/bin:$GITHUB_WORKSPACE/kernel_workspace/gcc-32/bin:$PATH
         export KBUILD_BUILD_HOST=Github-Action
         export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
-        BA_CMD="CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-"
+        BA_CMD="CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-buildroot-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-androideabi-"
         EX_CMD="LD=ld.lld LLVM=1 LLVM_IAS=1"
         DEFCONFIG="yulbax_defconfig"
         make O=out ARCH=arm64 $BA_CMD $EX_CMD $DEFCONFIG
