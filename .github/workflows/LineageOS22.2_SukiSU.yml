@@ -40,7 +40,7 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone --recursive https://github.com/JacoaFur/android_kernel_lge_msm8998.git -b sukisu android-kernel --depth=1
+        git clone --recursive https://github.com/JacoaFur/android_kernel_lge_msm8998.git -b v1.7 android-kernel --depth=1
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts
         sed -i 's/ -dirty//g' setlocalversion
 
